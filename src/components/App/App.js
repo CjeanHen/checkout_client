@@ -13,6 +13,7 @@ import IndexSurveys from '../IndexSurveys/IndexSurveys'
 import ShowSurvey from '../ShowSurvey/ShowSurvey'
 import Home from '../Home/Home'
 import BrowseSurveys from '../BrowseSurveys/BrowseSurveys'
+import TakeSurvey from '../TakeSurvey/TakeSurvey'
 
 class App extends Component {
   constructor () {
@@ -73,6 +74,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/browse-surveys' render={() => (
             <BrowseSurveys user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/take-survey/:id' render={() => (
+            <TakeSurvey user={user} />
           )} />
         </main>
       </Fragment>

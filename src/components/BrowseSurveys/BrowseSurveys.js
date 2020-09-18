@@ -20,7 +20,7 @@ const BrowseSurveys = ({ user }) => {
 
   const surveysJsx = allSurveys.map(survey => (
     <div key={survey.id}>
-      <Link to={`/survey/${survey.id}`}>{survey.name}</Link>
+      <Link to={`/take-survey/${survey.id}`}>{survey.name}</Link>
       <p>Created on: {survey.created_on}</p>
       <p>Description: {survey.description}</p>
     </div>
