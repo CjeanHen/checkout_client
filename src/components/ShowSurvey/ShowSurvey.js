@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import CreateQuestion from '../CreateQuestion/CreateQuestion'
 import DeleteQuestion from '../DeleteQuestion/DeleteQuestion'
 import EditQuestion from '../EditQuestion/EditQuestion'
+import ViewAnswers from '../ViewAnswers/ViewAnswers'
 
 // Component for an individual survey
 const ShowSurvey = ({ user, match }) => {
@@ -44,6 +45,7 @@ const ShowSurvey = ({ user, match }) => {
           surveyId={survey.id}
           setQuestions={setQuestions}
         />
+        <ViewAnswers user={user} question={question} survey={survey} />
       </li>
     </div>
   ))

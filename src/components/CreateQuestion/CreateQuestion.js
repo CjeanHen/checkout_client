@@ -4,8 +4,8 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
 const CreateQuestion = ({ user, surveyId, setQuestions }) => {
-  const [question, setQuestion] = useState(false)
-  const [createdQuestion, setCreatedQuestion] = useState({})
+  const [question, setQuestion] = useState({})
+  const [createdQuestion, setCreatedQuestion] = useState(false)
 
   // Event handler for the completion of the question input field
   const handleChange = event => {
@@ -33,6 +33,7 @@ const CreateQuestion = ({ user, surveyId, setQuestions }) => {
       data: { question }
     })
       .then(res => setCreatedQuestion(true))
+      .then(() => setQuestion({}))
       .catch(console.error)
   }
 

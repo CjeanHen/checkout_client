@@ -30,7 +30,7 @@ const AnswerForm = ({ user, question, survey }) => {
       },
       data: { answer }
     })
-      .then(res => console.log(res))
+      .then(() => setAnswer({}))
       .catch(console.error)
   }
 
