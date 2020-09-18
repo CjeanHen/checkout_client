@@ -1,11 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
-const CreateSurveyBtn = () => {
+const CreateSurveyBtn = ({ history }) => {
+  const handleClick = event => {
+    history.push('/create-survey')
+  }
   return (
-    <Button variant="info"><Link to='/create-survey'>Start a new survey</Link></Button>
+    <Button onClick={handleClick}>Start a new survey</Button>
   )
 }
 
-export default CreateSurveyBtn
+export default withRouter(CreateSurveyBtn)

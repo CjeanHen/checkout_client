@@ -56,7 +56,7 @@ const EditQuestion = ({ user, questionId, question1, surveyId, setQuestions }) =
   // Edit button to display next to the question & modal to edit
   return (
     <div>
-      <Button size="sm" variant="link" onClick={handleShow}>
+      <Button size="sm" onClick={handleShow}>
         Edit
       </Button>
 
@@ -76,7 +76,7 @@ const EditQuestion = ({ user, questionId, question1, surveyId, setQuestions }) =
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button onClick={handleClose}>
             Cancel
           </Button>
         </Modal.Footer>

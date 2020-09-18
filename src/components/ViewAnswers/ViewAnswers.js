@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -22,14 +22,14 @@ const ViewAnswers = ({ user, question, survey }) => {
 
   const answersJsx = answers.map(answer => (
     <div key={answer.id}>
-      <p>{answer.response}</p>
+      <Card body>{answer.response}</Card>
     </div>
   ))
 
   return (
     <div>
-      <Button variant="link" onClick={handleClick}>See responses</Button>
-      <div>{answersJsx}</div>
+      <Button onClick={handleClick}>See responses</Button>
+      {answersJsx}
     </div>
   )
 }

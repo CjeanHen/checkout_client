@@ -54,7 +54,7 @@ const EditSurvey = ({ user, surveyId, survey1, setSurveys }) => {
 
   return (
     <div>
-      <Button size="sm" variant="link" onClick={handleShow}>
+      <Button size="sm" onClick={handleShow}>
         Edit
       </Button>
 
@@ -72,13 +72,13 @@ const EditSurvey = ({ user, surveyId, survey1, setSurveys }) => {
               <Form.Label>Description</Form.Label>
               <Form.Control type="text" name="description" value={survey.description || ''} onChange={handleChange} placeholder="Tell us about your survey" />
             </Form.Group>
-            <Button variant="success" type="submit" onClick={handleClose}>
+            <Button type="submit" onClick={handleClose}>
               Submit
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button onClick={handleClose}>
             Cancel
           </Button>
         </Modal.Footer>

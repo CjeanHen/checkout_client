@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Card } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import DeleteSurveyBtn from '../DeleteSurveyBtn/DeleteSurveyBtn'
@@ -21,13 +22,15 @@ const IndexSurveys = ({ user }) => {
   }, [setSurveys])
 
   const surveysJsx = surveys.map(survey => (
-    <div key={survey.id}>
-      <Link to={`/survey/${survey.id}`}>{survey.name}</Link>
-      <p>Created on: {survey.created_on}</p>
-      <p>Description: {survey.description}</p>
-      <DeleteSurveyBtn surveyId={survey.id} user={user} setSurveys={setSurveys} />
-      <EditSurvey user={user} surveyId={survey.id} setSurveys={setSurveys} survey1={survey} />
-    </div>
+    <Card key={survey.id}>
+      <Card.Body>
+        <Card.Title><Link to={`/survey/${survey.id}`}>{survey.name}</Link></Card.Title>
+        <Card.Subtitle><p>Created on: {survey.created_on}</p></Card.Subtitle>
+        <p>Description: {survey.description}</p>
+        <Card.Text><DeleteSurveyBtn surveyId={survey.id} user={user} setSurveys={setSurveys} /></Card.Text>
+        <EditSurvey user={user} surveyId={survey.id} setSurveys={setSurveys} survey1={survey} />
+      </Card.Body>
+    </Card>
   ))
 
   return (

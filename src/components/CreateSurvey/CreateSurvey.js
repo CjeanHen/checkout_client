@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // Component with the view for the form to start a survey
 const CreateSurvey = ({ user, history }) => {
@@ -20,6 +20,10 @@ const CreateSurvey = ({ user, history }) => {
 
       return editedSurvey
     })
+  }
+
+  const handleClick = event => {
+    history.push('/home')
   }
 
   // the API call to make a POST request for a new survey
@@ -52,10 +56,9 @@ const CreateSurvey = ({ user, history }) => {
           <Form.Control type="text" name="description" value={survey.description || ''} onChange={handleChange} placeholder="Tell us about your survey" />
         </Form.Group>
         <Button variant="success" type="submit">
-          Submit
+          Start
         </Button>
-        <Button variant="danger"><Link to='/home'>Cancel</Link>
-        </Button>
+        <Button onClick={handleClick}>Cancel</Button>
       </Form>
     </div>
   )

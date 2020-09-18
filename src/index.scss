@@ -1,1 +1,37 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+a {
+  color: #8E8D8A;
+}
+
+body {
+  background-color: #EAE7DC;
+  color: #E85A4F;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navlinks {
+  color: #EAE7DC;
+}
+
+.btn {
+  background-color: #E85A4F;
+}
+
+.btn:hover {
+  background-color: #E98074;
+}
+
+.btn:active {
+  background-color: #E85A4F;
+}
+
+.btn-primary {
+  border-color: #EAE7DC;
+}
+
+#navbar {
+  background-color: #E85A4F;
+  color: #FFFFFF;
+}

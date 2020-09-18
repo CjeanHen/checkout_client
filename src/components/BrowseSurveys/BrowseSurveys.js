@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Card } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -19,11 +20,13 @@ const BrowseSurveys = ({ user }) => {
   }, [setAllSurveys])
 
   const surveysJsx = allSurveys.map(survey => (
-    <div key={survey.id}>
-      <Link to={`/take-survey/${survey.id}`}>{survey.name}</Link>
-      <p>Created on: {survey.created_on}</p>
-      <p>Description: {survey.description}</p>
-    </div>
+    <Card key={survey.id}>
+      <Card.Body>
+        <Card.Title><Link to={`/take-survey/${survey.id}`}>{survey.name}</Link></Card.Title>
+        <Card.Subtitle><p>Created on: {survey.created_on}</p></Card.Subtitle>
+        <p>Description: {survey.description}</p>
+      </Card.Body>
+    </Card>
   ))
 
   return (
