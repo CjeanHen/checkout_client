@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button, Modal, Form } from 'react-bootstrap'
 import apiUrl from '../../apiConfig'
 
-const EditSurvey = ({ user, surveyId, survey1 }) => {
-  const [survey, setSurvey] = useState(survey1)
+// Button, modal and axios call to PATCH an individual question
+const EditQuestion = ({ user, questionId, question1, surveyId, setQuestions }) => {
+  const [question, setQuestion] = useState(question1)
   const [show, setShow] = useState(false)
+  const [edited, setEdited] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -14,12 +16,12 @@ const EditSurvey = ({ user, surveyId, survey1 }) => {
   const handleChange = event => {
     event.persist()
 
-    setSurvey(prevSurvey => {
-      const updatedSurvey = { [event.target.name]: event.target.value }
+    setQuestion(prevQuestion => {
+      const updatedQuestion = { [event.target.name]: event.target.value }
 
-      const editedSurvey = Object.assign({}, prevSurvey, updatedSurvey)
+      const editedQuestion = Object.assign({}, prevQuestion, updatedQuestion)
 
-      return editedSurvey
+      return editedQuestion
     })
   }
 
@@ -28,21 +30,34 @@ const EditSurvey = ({ user, surveyId, survey1 }) => {
     event.preventDefault()
 
     return axios({
-      url: `${apiUrl}/surveys/${surveyId}/`,
+      url: `${apiUrl}/questions/${questionId}/`,
       method: 'PATCH',
       headers: {
         'Authorization': `Token ${user.token}`
       },
-      data: { survey }
+      data: { question }
     })
-      .then(res => console.log(res))
+      .then(res => setEdited(true))
       .catch(console.error)
   }
 
+  // the effect that updates the index of questions after the question has been edited
+  useEffect(() => {
+    axios({
+      url: apiUrl + `/surveys/${surveyId}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${user.token}`
+      }
+    })
+      .then(res => setQuestions(res.data.survey.questions))
+  }, [edited, setEdited])
+
+  // Edit button to display next to the question & modal to edit
   return (
     <div>
-      <Button variant="secondary" onClick={handleShow}>
-        Edit Survey
+      <Button size="sm" variant="link" onClick={handleShow}>
+        Edit
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -50,17 +65,13 @@ const EditSurvey = ({ user, surveyId, survey1 }) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Survey Name</Form.Label>
-              <Form.Control type="text" name="name" value={survey.name || ''} onChange={handleChange} placeholder="Enter survey name" />
+            <Form.Group>
+              <Form.Label>Edit question</Form.Label>
+              <Form.Control type="text" name="question" value={question.question || ''} onChange={handleChange} placeholder="Edit your question" />
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Description</Form.Label>
-              <Form.Control type="text" name="description" value={survey.description || ''} onChange={handleChange} placeholder="Tell us about your survey" />
-            </Form.Group>
             <Button variant="success" type="submit" onClick={handleClose}>
-              Submit
+              Update
             </Button>
           </Form>
         </Modal.Body>
@@ -74,4 +85,4 @@ const EditSurvey = ({ user, surveyId, survey1 }) => {
   )
 }
 
-export default EditSurvey
+export default EditQuestion

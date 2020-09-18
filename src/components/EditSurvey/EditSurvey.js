@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button, Modal, Form } from 'react-bootstrap'
 import apiUrl from '../../apiConfig'
 
-const EditSurvey = ({ user, surveyId, survey1 }) => {
+const EditSurvey = ({ user, surveyId, survey1, setSurveys }) => {
   const [survey, setSurvey] = useState(survey1)
+  const [edited, setEdited] = useState(false)
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -35,14 +36,26 @@ const EditSurvey = ({ user, surveyId, survey1 }) => {
       },
       data: { survey }
     })
-      .then(res => console.log(res))
+      .then(res => setEdited(true))
       .catch(console.error)
   }
 
+  // the effect that updates the index after the survey has been edited
+  useEffect(() => {
+    axios({
+      url: apiUrl + '/surveys/',
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${user.token}`
+      }
+    })
+      .then(res => setSurveys(res.data.surveys))
+  }, [edited, setEdited])
+
   return (
     <div>
-      <Button variant="secondary" onClick={handleShow}>
-        Edit Survey
+      <Button size="sm" variant="link" onClick={handleShow}>
+        Edit
       </Button>
 
       <Modal show={show} onHide={handleClose}>

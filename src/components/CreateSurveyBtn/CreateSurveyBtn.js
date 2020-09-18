@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 
 const CreateSurveyBtn = () => {
   return (
-    <Button variant="info"><Link to='/create-survey'>Create new survey</Link></Button>
+    <Button variant="info"><Link to='/create-survey'>Start a new survey</Link></Button>
   )
 }
 

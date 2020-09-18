@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const CreateQuestion = ({ user, surveyId }) => {
-  const [question, setQuestion] = useState({})
+const CreateQuestion = ({ user, surveyId, setQuestions }) => {
+  const [question, setQuestion] = useState(false)
+  const [createdQuestion, setCreatedQuestion] = useState({})
 
   // Event handler for the completion of the question input field
   const handleChange = event => {
@@ -31,9 +32,21 @@ const CreateQuestion = ({ user, surveyId }) => {
       },
       data: { question }
     })
-      .then(res => console.log(res))
+      .then(res => setCreatedQuestion(true))
       .catch(console.error)
   }
+
+  // effect to update the index of questions after a new one is created
+  useEffect(() => {
+    axios({
+      url: apiUrl + `/surveys/${surveyId}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${user.token}`
+      }
+    })
+      .then(res => setQuestions(res.data.survey.questions))
+  }, [createdQuestion, setCreatedQuestion])
 
   return (
     <Form onSubmit={handleSubmit}>

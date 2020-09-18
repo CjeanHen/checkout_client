@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
+import { Button, Modal, Form } from 'react-bootstrap'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 
-const DeleteSurveyBtn = ({ surveyId, user }) => {
+const DeleteSurveyBtn = ({ surveyId, user, setSurveys }) => {
   const [show, setShow] = useState(false)
+  const [deleted, setDeleted] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -20,14 +21,26 @@ const DeleteSurveyBtn = ({ surveyId, user }) => {
         'Authorization': `Token ${user.token}`
       }
     })
-      .then(res => console.log(res))
+      .then(res => setDeleted(true))
       .catch(console.error)
   }
 
+  // this call updates the index after a delete
+  useEffect(() => {
+    axios({
+      url: apiUrl + '/surveys/',
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${user.token}`
+      }
+    })
+      .then(res => setSurveys(res.data.surveys))
+  }, [deleted, setDeleted])
+
   return (
     <div>
-      <Button variant="danger" onClick={handleShow}>
-        Delete Survey
+      <Button size="sm" variant="danger" onClick={handleShow}>
+        Delete
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -35,12 +48,14 @@ const DeleteSurveyBtn = ({ surveyId, user }) => {
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this survey?</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" type="submit" onClick={handleSubmit}>
-            Yes, delete survey
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
+          <Form onSubmit={handleSubmit}>
+            <Button variant="danger" type="submit" onClick={handleClose}>
+              Delete
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+          </Form>
         </Modal.Footer>
       </Modal>
     </div>

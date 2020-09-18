@@ -31,19 +31,19 @@ const ShowSurvey = ({ user, match }) => {
   const questionJsx = questions.map(question => (
     <div key={question.id}>
       <li>{question.question}
-        <EditQuestion
+        { question.owner === user.id ? <EditQuestion
           user={user}
           questionId={question.id}
           question1={question}
           surveyId={survey.id}
           setQuestions={setQuestions}
-        />
-        <DeleteQuestion
+        /> : '' }
+        { question.owner === user.id ? <DeleteQuestion
           user={user}
           questionId={question.id}
           surveyId={survey.id}
           setQuestions={setQuestions}
-        />
+        /> : ''}
       </li>
     </div>
   ))

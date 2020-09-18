@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const ViewSurveysBtn = () => {
   return (
-    <Button variant="info"><Link to='/index-surveys'>View your surveys</Link></Button>
+    <Button variant="info"><Link to='/index-surveys'>Your Surveys</Link></Button>
   )
 }
 

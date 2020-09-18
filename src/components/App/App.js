@@ -8,11 +8,11 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import CreateSurveyBtn from '../CreateSurveyBtn/CreateSurveyBtn'
 import CreateSurvey from '../CreateSurvey/CreateSurvey'
-import ViewSurveysBtn from '../ViewSurveysBtn/ViewSurveysBtn'
 import IndexSurveys from '../IndexSurveys/IndexSurveys'
 import ShowSurvey from '../ShowSurvey/ShowSurvey'
+import Home from '../Home/Home'
+import BrowseSurveys from '../BrowseSurveys/BrowseSurveys'
 
 class App extends Component {
   constructor () {
@@ -38,8 +38,6 @@ class App extends Component {
     return (
       <Fragment>
         <Header user={user} />
-        <CreateSurveyBtn />
-        <ViewSurveysBtn />
         {msgAlerts.map((msgAlert, index) => (
           <AutoDismissAlert
             key={index}
@@ -61,6 +59,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/home' render={() => (
+            <Home user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/create-survey' render={() => (
             <CreateSurvey user={user} />
           )} />
@@ -69,6 +70,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/survey/:id' render={() => (
             <ShowSurvey user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/browse-surveys' render={() => (
+            <BrowseSurveys user={user} />
           )} />
         </main>
       </Fragment>

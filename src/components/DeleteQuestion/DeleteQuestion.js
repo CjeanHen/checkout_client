@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 
-const DeleteQuestion = ({ questionId, user }) => {
+const DeleteQuestion = ({ questionId, user, surveyId, setQuestions }) => {
   const [show, setShow] = useState(false)
+  const [deletedQuestion, setDeletedQuestion] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -20,13 +21,25 @@ const DeleteQuestion = ({ questionId, user }) => {
         'Authorization': `Token ${user.token}`
       }
     })
-      .then(res => console.log(res))
+      .then(res => setDeletedQuestion(true))
       .catch(console.error)
   }
 
+  // effect to update the index of questions after a question is deleted
+  useEffect(() => {
+    axios({
+      url: apiUrl + `/surveys/${surveyId}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${user.token}`
+      }
+    })
+      .then(res => setQuestions(res.data.survey.questions))
+  }, [deletedQuestion, setDeletedQuestion])
+
   return (
     <div>
-      <Button variant="danger" onClick={handleShow}>
+      <Button size="sm" variant="danger" onClick={handleShow}>
         Delete
       </Button>
 
@@ -36,7 +49,7 @@ const DeleteQuestion = ({ questionId, user }) => {
         <Modal.Body>Are you sure you want to delete this question?</Modal.Body>
         <Modal.Footer>
           <Button variant="danger" type="submit" onClick={handleSubmit}>
-            Yes, delete question
+            Delete
           </Button>
           <Button variant="secondary" onClick={handleClose}>
             Cancel

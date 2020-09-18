@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
+// Component with the view for the form to start a survey
 const CreateSurvey = ({ user, history }) => {
   const [survey, setSurvey] = useState({})
+  // const [createdSurveyId, setCreatedSurveyId] = useState('')
 
   // Event handler for completion of the survey input fields
   const handleChange = event => {
@@ -32,7 +34,7 @@ const CreateSurvey = ({ user, history }) => {
       },
       data: { survey }
     })
-      .then(history.push('/index-surveys/'))
+      .then(res => history.push(`survey/${res.data.survey.id}`))
       .catch(console.error)
   }
 
@@ -52,8 +54,7 @@ const CreateSurvey = ({ user, history }) => {
         <Button variant="success" type="submit">
           Submit
         </Button>
-        <Button variant="danger">
-          Cancel
+        <Button variant="danger"><Link to='/home'>Cancel</Link>
         </Button>
       </Form>
     </div>
