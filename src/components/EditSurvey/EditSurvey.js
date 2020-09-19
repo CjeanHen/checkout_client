@@ -55,7 +55,7 @@ const EditSurvey = ({ user, surveyId, survey1, setSurveys }) => {
   return (
     <div>
       <Button size="sm" onClick={handleShow}>
-        Edit
+        Edit Preview
       </Button>
 
       <Modal show={show} onHide={handleClose}>

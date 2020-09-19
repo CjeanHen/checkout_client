@@ -7,7 +7,7 @@ const TakeSurveyBtn = ({ history }) => {
     history.push('/browse-surveys')
   }
   return (
-    <Button onClick={handleClick}>Browse surveys</Button>
+    <Button size="lg" onClick={handleClick}>Take a survey</Button>
   )
 }
 

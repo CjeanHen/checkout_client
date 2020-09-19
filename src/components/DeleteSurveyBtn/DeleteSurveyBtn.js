@@ -39,7 +39,7 @@ const DeleteSurveyBtn = ({ surveyId, user, setSurveys }) => {
 
   return (
     <div>
-      <Button size="sm" variant="danger" onClick={handleShow}>
+      <Button size="sm" onClick={handleShow}>
         Delete
       </Button>
 
@@ -49,10 +49,10 @@ const DeleteSurveyBtn = ({ surveyId, user, setSurveys }) => {
         <Modal.Body>Are you sure you want to delete this survey?</Modal.Body>
         <Modal.Footer>
           <Form onSubmit={handleSubmit}>
-            <Button variant="danger" type="submit" onClick={handleClose}>
+            <Button type="submit" onClick={handleClose}>
               Delete
             </Button>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button onClick={handleClose}>
               Cancel
             </Button>
           </Form>

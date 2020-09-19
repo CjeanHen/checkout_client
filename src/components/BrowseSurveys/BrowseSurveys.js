@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
+// This component allows users to browse surveys made by all users and answer any one they choose
 const BrowseSurveys = ({ user }) => {
   const [allSurveys, setAllSurveys] = useState([])
 
@@ -31,7 +32,7 @@ const BrowseSurveys = ({ user }) => {
 
   return (
     <div>
-      <h1>Browse surveys</h1>
+      <h1>Broswse all surveys</h1>
       {surveysJsx.reverse()}
     </div>
   )

@@ -39,19 +39,19 @@ const DeleteQuestion = ({ questionId, user, surveyId, setQuestions }) => {
 
   return (
     <div>
-      <Button size="sm" variant="danger" onClick={handleShow}>
-        Delete
+      <Button size="sm" onClick={handleShow}>
+        Remove question
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this question?</Modal.Body>
+        <Modal.Body>Are you sure you want to delete this question? All answers will be deleted as well.</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" type="submit" onClick={handleSubmit}>
+          <Button type="submit" onClick={handleSubmit}>
             Delete
           </Button>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button onClick={handleClose}>
             Cancel
           </Button>
         </Modal.Footer>

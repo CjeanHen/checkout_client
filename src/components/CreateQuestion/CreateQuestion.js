@@ -33,6 +33,7 @@ const CreateQuestion = ({ user, surveyId, setQuestions }) => {
       data: { question }
     })
       .then(res => setCreatedQuestion(true))
+      .then(res => setCreatedQuestion(false))
       .then(() => setQuestion({}))
       .catch(console.error)
   }
@@ -52,11 +53,11 @@ const CreateQuestion = ({ user, surveyId, setQuestions }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>New Question</Form.Label>
+        <Form.Label>Add a New Question</Form.Label>
         <Form.Control type="text" name="question" value={question.question || ''} onChange={handleChange} placeholder="Type your question here" />
       </Form.Group>
       <Button variant="primary" type="submit">
-        Submit
+        Add to survey
       </Button>
     </Form>
   )

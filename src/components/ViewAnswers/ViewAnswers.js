@@ -28,7 +28,7 @@ const ViewAnswers = ({ user, question, survey }) => {
 
   return (
     <div>
-      <Button onClick={handleClick}>See responses</Button>
+      <Button size="sm" onClick={handleClick}>See responses</Button>
       {answersJsx}
     </div>
   )

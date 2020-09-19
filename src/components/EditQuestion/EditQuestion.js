@@ -57,7 +57,7 @@ const EditQuestion = ({ user, questionId, question1, surveyId, setQuestions }) =
   return (
     <div>
       <Button size="sm" onClick={handleShow}>
-        Edit
+        Edit Question
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -69,8 +69,7 @@ const EditQuestion = ({ user, questionId, question1, surveyId, setQuestions }) =
               <Form.Label>Edit question</Form.Label>
               <Form.Control type="text" name="question" value={question.question || ''} onChange={handleChange} placeholder="Edit your question" />
             </Form.Group>
-
-            <Button variant="success" type="submit" onClick={handleClose}>
+            <Button type="submit" onClick={handleClose}>
               Update
             </Button>
           </Form>
