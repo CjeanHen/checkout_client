@@ -25,7 +25,7 @@ const BrowseSurveys = ({ user }) => {
       <Card.Body>
         <Card.Title><Link to={`/take-survey/${survey.id}`}>{survey.name}</Link></Card.Title>
         <Card.Subtitle><p>Created on: {survey.created_on}</p></Card.Subtitle>
-        <p>Description: {survey.description}</p>
+        <p>{survey.description}</p>
       </Card.Body>
     </Card>
   ))

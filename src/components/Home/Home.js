@@ -7,6 +7,7 @@ import TakeSurveyBtn from '../TakeSurveyBtn/TakeSurveyBtn'
 const Home = ({ user }) => {
   return (
     <div id="home-options">
+      <h1>Let&apos;s get started</h1>
       <Container>
         <Row className="justify-content-center">
           <Col className="text-center">

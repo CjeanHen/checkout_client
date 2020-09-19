@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import AnswerForm from '../AnswerForm/AnswerForm'
 
 // Component for a survey that you wish to complete
-const TakeSurvey = ({ user, match }) => {
+const TakeSurvey = ({ user, match, msgAlert }) => {
   const [takeSurvey, setTakeSurvey] = useState({})
   const [questionsArr, setQuestionsArr] = useState([])
 
@@ -28,7 +28,7 @@ const TakeSurvey = ({ user, match }) => {
   // Using the questions state, each question object is broken out for display on the survey
   const questionJsx = questionsArr.map(question => (
     <div key={question.id}>
-      <li>{question.question} <AnswerForm question={question} user={user} survey={takeSurvey} /></li>
+      <li>{question.question} <AnswerForm msgAlert={msgAlert} question={question} user={user} survey={takeSurvey} /></li>
     </div>
   ))
 

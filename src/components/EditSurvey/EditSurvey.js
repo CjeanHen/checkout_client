@@ -60,6 +60,7 @@ const EditSurvey = ({ user, surveyId, survey1, setSurveys }) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
+          <h2>Survey Preview</h2>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>

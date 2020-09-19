@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button, Modal, Form } from 'react-bootstrap'
 import apiUrl from '../../apiConfig'
+import EditIcon from '@material-ui/icons/Edit'
 
 // Button, modal and axios call to PATCH an individual question
 const EditQuestion = ({ user, questionId, question1, surveyId, setQuestions }) => {
@@ -55,9 +56,9 @@ const EditQuestion = ({ user, questionId, question1, surveyId, setQuestions }) =
 
   // Edit button to display next to the question & modal to edit
   return (
-    <div>
+    <div className="question-options">
       <Button size="sm" onClick={handleShow}>
-        Edit Question
+        <EditIcon fontSize="small" />
       </Button>
 
       <Modal show={show} onHide={handleClose}>

@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import messages from '../AutoDismissAlert/messages'
 // This component is responsible for handling answers submitted for each question
-const AnswerForm = ({ user, question, survey }) => {
+const AnswerForm = ({ user, question, survey, msgAlert }) => {
   const [answer, setAnswer] = useState({})
 
   const handleChange = event => {
@@ -31,7 +32,16 @@ const AnswerForm = ({ user, question, survey }) => {
       data: { answer }
     })
       .then(() => setAnswer({}))
-      .catch(console.error)
+      .then(() => msgAlert({
+        heading: 'Success',
+        message: messages.answerSentSuccess,
+        variant: 'success'
+      }))
+      .catch(() => msgAlert({
+        heading: 'Uh-oh',
+        message: messages.answerSentFailure,
+        variant: 'danger'
+      }))
   }
 
   return (

@@ -30,23 +30,26 @@ const ShowSurvey = ({ user, match }) => {
 
   // Using the questions state, each question object is broken out for display on the survey
   const questionJsx = questions.map(question => (
-    <div key={question.id}>
-      <li>{question.question}
-        <EditQuestion
-          user={user}
-          questionId={question.id}
-          question1={question}
-          surveyId={survey.id}
-          setQuestions={setQuestions}
-        />
-        <DeleteQuestion
-          user={user}
-          questionId={question.id}
-          surveyId={survey.id}
-          setQuestions={setQuestions}
-        />
-        <ViewAnswers user={user} question={question} survey={survey} />
-      </li>
+    <div key={question}>
+      <div className="question-container" key={question.id}>
+        <li>{question.question}</li>
+        <span className="question-controls">
+          <EditQuestion
+            user={user}
+            questionId={question.id}
+            question1={question}
+            surveyId={survey.id}
+            setQuestions={setQuestions}
+          />
+          <DeleteQuestion
+            user={user}
+            questionId={question.id}
+            surveyId={survey.id}
+            setQuestions={setQuestions}
+          />
+        </span>
+      </div>
+      <ViewAnswers user={user} question={question} survey={survey} />
     </div>
   ))
 

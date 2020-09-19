@@ -35,6 +35,21 @@ body {
   border-color: #EAE7DC;
 }
 
+.question-container {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.question-controls {
+  align-self: flex-end;
+}
+
+.question-options{
+  display: inline;
+  margin: 2.5px;
+}
+
 #navbar {
   background: rgb(45, 129, 132);
   background: radial-gradient(circle, rgba(159,237,215,1) 2%, rgba(2,102,112,1) 100%);

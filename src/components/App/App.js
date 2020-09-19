@@ -76,7 +76,7 @@ class App extends Component {
             <BrowseSurveys user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/take-survey/:id' render={() => (
-            <TakeSurvey user={user} />
+            <TakeSurvey msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

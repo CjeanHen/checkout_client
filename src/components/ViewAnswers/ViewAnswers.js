@@ -27,8 +27,8 @@ const ViewAnswers = ({ user, question, survey }) => {
   ))
 
   return (
-    <div>
-      <Button size="sm" onClick={handleClick}>See responses</Button>
+    <div className="question-options">
+      <Button size="sm" onClick={handleClick}>View responses</Button>
       {answersJsx}
     </div>
   )

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const DeleteQuestion = ({ questionId, user, surveyId, setQuestions }) => {
   const [show, setShow] = useState(false)
@@ -38,9 +39,9 @@ const DeleteQuestion = ({ questionId, user, surveyId, setQuestions }) => {
   }, [deletedQuestion, setDeletedQuestion])
 
   return (
-    <div>
+    <div className="question-options">
       <Button size="sm" onClick={handleShow}>
-        Remove question
+        <DeleteIcon fontSize="small" />
       </Button>
 
       <Modal show={show} onHide={handleClose}>

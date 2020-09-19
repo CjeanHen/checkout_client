@@ -44,7 +44,7 @@ const CreateSurvey = ({ user, history }) => {
 
   return (
     <div>
-      <h1>Create a new survey here</h1>
+      <h1>Create Survey Preview</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Survey Name</Form.Label>
