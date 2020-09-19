@@ -30,7 +30,7 @@ const ShowSurvey = ({ user, match }) => {
 
   // Using the questions state, each question object is broken out for display on the survey
   const questionJsx = questions.map(question => (
-    <div key={question}>
+    <div key={question.id}>
       <div className="question-container" key={question.id}>
         <li>{question.question}</li>
         <span className="question-controls">

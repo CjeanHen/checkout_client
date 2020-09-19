@@ -8,7 +8,7 @@ const ViewSurveysBtn = ({ history }) => {
   }
 
   return (
-    <Button size="lg" onClick={handleClick}>Your Surveys</Button>
+    <Button size="lg" className="btn-block" onClick={handleClick}>Your Surveys</Button>
   )
 }
 

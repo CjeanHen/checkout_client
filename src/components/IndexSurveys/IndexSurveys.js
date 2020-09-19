@@ -25,7 +25,7 @@ const IndexSurveys = ({ user }) => {
     <Card key={survey.id}>
       <Card.Body>
         <Card.Title><Link to={`/survey/${survey.id}`}>{survey.name}</Link></Card.Title>
-        <Card.Subtitle className="mb-2 text-muted"><p>Created on: {survey.created_on}</p></Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted"><h6>Created on: {survey.created_on}</h6></Card.Subtitle>
         <Card.Text>
           <p>{survey.description}</p>
         </Card.Text>

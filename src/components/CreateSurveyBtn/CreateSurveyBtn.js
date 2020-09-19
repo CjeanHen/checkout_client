@@ -7,7 +7,7 @@ const CreateSurveyBtn = ({ history }) => {
     history.push('/create-survey')
   }
   return (
-    <Button size="lg" onClick={handleClick}>New survey</Button>
+    <Button size="lg" className="btn-block" onClick={handleClick}>New survey</Button>
   )
 }
 
