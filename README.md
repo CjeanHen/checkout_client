@@ -1,6 +1,8 @@
 # Checkout Front End
 Inspired by weekly exit tickets, checkout is an easy way to make a questionaire to get feedback from students or team members. Anyone can create a survey, but only the survey owner can edit, delete or view responses to the questions. All response submits are final. It is easy to view all of the responses below each question and allows you to quickly guage your audience's feedback.
 
+![Checkout screenshot](Checkout.png)
+
 ## Set Up and Instalation
 1. Fork and clone this repository
 2. Install dependencies by running `npm install`

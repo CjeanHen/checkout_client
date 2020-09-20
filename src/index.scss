@@ -15,24 +15,44 @@ body {
   color: #026670;
 }
 
+img {
+  max-height: 150px;
+}
+
+.card-img-top {
+  min-height: 150px;
+}
+
+.optionCards {
+  transition: 0.3s;
+}
+
+.optionCards:hover {
+  box-shadow: 5px 10px 10px rgb(141, 141, 141);
+}
+
 .navlinks {
-  color: #EAE7DC;
+  color: #FFFFFF;
 }
 
 .btn {
   background-color: #026670;
+  outline: none !important;
 }
 
 .btn:hover {
-  background-color: #9FEDD7;
+  background-color: #34848c;
+  outline: none !important;
 }
 
 .btn:active {
   background-color: #026670;
+  outline: none !important;
 }
 
 .btn-primary {
-  border-color: #EAE7DC;
+  outline: none !important;
+  background-color: #026670;
 }
 
 .question-container {
@@ -50,16 +70,19 @@ body {
   margin: 2.5px;
 }
 
+#createSrvyCard {
+  background-color: #FFFFFF;
+}
+
 #home-options {
   background-color: #EDEAE5;
   padding: 2rem;
   margin: auto;
-  max-width: 50%;
 }
 
 #navbar {
-  background: rgb(45, 129, 132);
-  background: radial-gradient(circle, rgba(159,237,215,1) 2%, rgba(2,102,112,1) 100%);
+  background: rgb(103,163,169);
+  background: radial-gradient(circle, rgba(103,163,169,1) 2%, rgba(2,102,112,1) 100%);
   color: #FFFFFF;
   margin-bottom: 10px;
 }
@@ -73,4 +96,8 @@ body {
   margin: auto;
   width: 100%;
   text-align: center;
+}
+
+#viewSrvyCard {
+  background-color: white;
 }

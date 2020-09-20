@@ -32,7 +32,7 @@ const BrowseSurveys = ({ user }) => {
 
   return (
     <div>
-      <h1>Broswse all surveys</h1>
+      <h1>Browse all surveys</h1>
       {surveysJsx.reverse()}
     </div>
   )
