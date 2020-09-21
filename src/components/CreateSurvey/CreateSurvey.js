@@ -14,7 +14,7 @@ const CreateSurvey = ({ user, history }) => {
     event.persist()
 
     setSurvey(prevSurvey => {
-      const updatedSurvey = { [event.target.name]: event.target.value }
+      const updatedSurvey = { [event.target.name]: event.target.value, author: user.email }
 
       const editedSurvey = Object.assign({}, prevSurvey, updatedSurvey)
 

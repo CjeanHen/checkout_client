@@ -56,6 +56,7 @@ const ShowSurvey = ({ user, match }) => {
   return (
     <div key={survey.id}>
       <h3>{survey.name}</h3>
+      <p>By {survey.author}</p>
       <p>Created on {survey.created_on}</p>
       <p>{survey.description}</p>
       <h4>Questions:</h4>

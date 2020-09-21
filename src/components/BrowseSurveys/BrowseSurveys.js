@@ -24,7 +24,10 @@ const BrowseSurveys = ({ user }) => {
     <Card key={survey.id}>
       <Card.Body>
         <Card.Title><Link to={`/take-survey/${survey.id}`}>{survey.name}</Link></Card.Title>
-        <Card.Subtitle><p>Created on: {survey.created_on}</p></Card.Subtitle>
+        <Card.Subtitle>
+          <h6>By {survey.author}</h6>
+          <h6>Created on: {survey.created_on}</h6>
+        </Card.Subtitle>
         <p>{survey.description}</p>
       </Card.Body>
     </Card>

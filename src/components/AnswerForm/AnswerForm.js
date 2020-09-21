@@ -11,7 +11,7 @@ const AnswerForm = ({ user, question, survey, msgAlert }) => {
     event.persist()
 
     setAnswer(prevAnswer => {
-      const updatedAnswer = { [event.target.name]: event.target.value, answer_to: question.id, on_survey: survey.id }
+      const updatedAnswer = { [event.target.name]: event.target.value, answer_to: question.id, on_survey: survey.id, author: user.email }
 
       const editedAnswer = Object.assign({}, prevAnswer, updatedAnswer)
 

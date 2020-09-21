@@ -22,7 +22,7 @@ const ViewAnswers = ({ user, question, survey }) => {
 
   const answersJsx = answers.map(answer => (
     <div key={answer.id}>
-      <Card body>{answer.response}</Card>
+      <Card body>{answer.author}: {answer.response}</Card>
     </div>
   ))
 
