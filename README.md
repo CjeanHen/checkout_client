@@ -3,7 +3,7 @@ Inspired by weekly exit tickets, checkout is an easy way to make a questionaire 
 
 ![Checkout screenshot](Checkout.png)
 
-## Set Up and Instalation
+## Set Up and Installation
 1. Fork and clone this repository
 2. Install dependencies by running `npm install`
 3. Check out to a new branch
